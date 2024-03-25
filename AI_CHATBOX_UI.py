@@ -5,8 +5,8 @@ with st.sidebar:
 	zhipu_api_key = st.text_input("ZhipuAI API Key", key="chatbot_api_key", type="password")
 	submit_button = st.button("提交", key="submit_chatbot_api_key")
 
-st.title("💬 Chatbot")
-st.caption("🚀 A streamlit chatbot powered by zhipuAI LLM")
+st.title("💬 Lamher AI")
+st.caption("🚀 AI界面，有疑问请联系ljm")
 if "messages" not in st.session_state:
 	st.session_state["messages"] = [{"role": "assistant", "content": "请提出您的问题，我会尽力解答。"}]
 
