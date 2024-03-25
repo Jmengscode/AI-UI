@@ -35,10 +35,8 @@ def clear_cache_and_message():
     # Clear the cache
     st.session_state.cache = {}
 
-if st.sidebar.button('Clear Cache and Message'):
+if st.sidebar.button('Clear Cache'):
     clear_cache_and_message()
 
-message_placeholder = st.empty()
-
 if st.sidebar.button('Clear Message'):
-    message_placeholder.empty()
+    st.empty()
