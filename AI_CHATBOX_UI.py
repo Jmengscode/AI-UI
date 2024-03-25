@@ -3,19 +3,19 @@ import streamlit as st
 # 
 with st.sidebar:
 	zhipu_api_key = st.text_input("ZhipuAI API Key", key="chatbot_api_key", type="password")
-	submit_button = st.button("Submit", key="submit_chatbot_api_key")
+	submit_button = st.button("提交", key="submit_chatbot_api_key")
 
 st.title("💬 Chatbot")
 st.caption("🚀 A streamlit chatbot powered by zhipuAI LLM")
 if "messages" not in st.session_state:
-	st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+	st.session_state["messages"] = [{"role": "assistant", "content": "请提出您的问题，我会尽力解答。"}]
 
 for msg in st.session_state.messages:
 	st.chat_message(msg["role"]).write(msg["content"])
 
 if prompt := st.chat_input():
 	if not zhipu_api_key:
-		st.info("Please add your OpenAI API key to continue.")
+		st.info("请输入您的AI码以继续")
 		st.stop()
 
 	client = ZhipuAI(api_key=zhipu_api_key)
@@ -35,8 +35,8 @@ def clear_cache_and_message():
     # Clear the cache
     st.session_state.cache = {}
 
-if st.sidebar.button('Clear Cache'):
+if st.sidebar.button('清除缓存'):
     clear_cache_and_message()
 
-if st.sidebar.button('Clear Message'):
+if st.sidebar.button('清除聊天内容'):
     st.empty()
