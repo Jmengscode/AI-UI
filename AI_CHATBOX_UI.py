@@ -3,6 +3,7 @@ import streamlit as st
 # 
 with st.sidebar:
 	zhipu_api_key = st.text_input("ZhipuAI API Key", key="chatbot_api_key", type="password")
+	submit_button = st.button("Submit", key="submit_chatbot_api_key")
 
 st.title("💬 Chatbot")
 st.caption("🚀 A streamlit chatbot powered by zhipuAI LLM")
@@ -28,3 +29,16 @@ if prompt := st.chat_input():
 	msg = response.choices[0].message.content
 	st.session_state.messages.append({"role": "assistant", "content": msg})
 	st.chat_message("assistant").write(msg)
+
+def clear_cache_and_message():
+    """Clear Streamlit's cache and session state message."""
+    # Clear the cache
+    st.session_state.cache = {}
+
+if st.sidebar.button('Clear Cache and Message'):
+    clear_cache_and_message()
+
+message_placeholder = st.empty()
+
+if st.sidebar.button('Clear Message'):
+    message_placeholder.empty()
